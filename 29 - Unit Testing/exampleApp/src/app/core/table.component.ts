@@ -1,12 +1,12 @@
-import { Component, Inject } from "@angular/core";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model";
-import { ActivatedRoute } from "@angular/router";
-import { HighlightTrigger } from "./table.animations";
+import { Component, Inject } from '@angular/core';
+import { Product } from '../model/product.model';
+import { Model } from '../model/repository.model';
+import { ActivatedRoute } from '@angular/router';
+import { HighlightTrigger } from './table.animations';
 
 @Component({
-    selector: "paTable",
-    templateUrl: "table.component.html",
+    selector: 'paTable',
+    templateUrl: 'table.component.html',
     animations: [HighlightTrigger]
 })
 export class TableComponent {
@@ -14,8 +14,8 @@ export class TableComponent {
 
     constructor(private model: Model, activeRoute: ActivatedRoute) {
         activeRoute.params.subscribe(params => {
-            this.category = params["category"] || null;
-        })
+            this.category = params['category'] || null;
+        });
     }
 
     getProduct(key: number): Product {
@@ -37,10 +37,10 @@ export class TableComponent {
         this.model.deleteProduct(key);
     }
 
-    highlightCategory: string = "";
+    highlightCategory = '';
 
     getRowState(category: string): string {
-        return this.highlightCategory == "" ? "" :
-            this.highlightCategory == category ? "selected" : "notselected";
+        return this.highlightCategory == '' ? '' :
+            this.highlightCategory == category ? 'selected' : 'notselected';
     }
 }

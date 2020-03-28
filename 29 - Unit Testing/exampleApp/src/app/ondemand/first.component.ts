@@ -1,16 +1,16 @@
-import { Component, HostListener, Input } from "@angular/core";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model";
-import { RestDataSource } from "../model/rest.datasource";
+import { Component, HostListener, Input } from '@angular/core';
+import { Product } from '../model/product.model';
+import { Model } from '../model/repository.model';
+import { RestDataSource } from '../model/rest.datasource';
 
 @Component({
-    selector: "first",
-    templateUrl: "first.component.html"
+    selector: 'first',
+    templateUrl: 'first.component.html'
 })
 export class FirstComponent {
-    _category: string = "Soccer";
+    _category = 'Soccer';
     _products: Product[] = [];
-    highlighted: boolean = false;
+    highlighted = false;
 
     constructor(public datasource: RestDataSource) {}
 

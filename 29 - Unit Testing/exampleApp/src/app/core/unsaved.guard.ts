@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
     ActivatedRouteSnapshot, RouterStateSnapshot,
     Router
-} from "@angular/router";	
-import { Observable, Subject } from "rxjs";
-import { MessageService } from "../messages/message.service";
-import { Message } from "../messages/message.model";
-import { FormComponent } from "./form.component";
+} from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { MessageService } from '../messages/message.service';
+import { Message } from '../messages/message.model';
+import { FormComponent } from './form.component';
 
 @Injectable()
 export class UnsavedGuard {
@@ -18,23 +18,23 @@ export class UnsavedGuard {
         state: RouterStateSnapshot): Observable<boolean> | boolean {
 
         if (component.editing) {
-            if (["name", "category", "price"]
+            if (['name', 'category', 'price']
                 .some(prop => component.product[prop]
                     != component.originalProduct[prop])) {
-                let subject = new Subject<boolean>();
+                const subject = new Subject<boolean>();
 
-                let responses: [string, (string) => void][] = [
-                    ["Yes", () => {
+                const responses: [string, (string) => void][] = [
+                    ['Yes', () => {
                         subject.next(true);
                         subject.complete();
                     }],
-                    ["No", () => {
+                    ['No', () => {
                         this.router.navigateByUrl(this.router.url);
                         subject.next(false);
                         subject.complete();
                     }]
                 ];
-                this.messages.reportMessage(new Message("Discard Changes?",
+                this.messages.reportMessage(new Message('Discard Changes?',
                     true, responses));
                 return subject;
             }
