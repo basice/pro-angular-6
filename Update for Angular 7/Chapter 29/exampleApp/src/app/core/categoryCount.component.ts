@@ -1,17 +1,17 @@
 import {
     Component, KeyValueDiffer, KeyValueDiffers, ChangeDetectorRef
-} from "@angular/core";
-import { Model } from "../model/repository.model";
+} from '@angular/core';
+import { Model } from '../model/repository.model';
 
 @Component({
-    selector: "paCategoryCount",
+    selector: 'paCategoryCount',
     template: `<div class="bg-primary p-2 text-white">
                     There are {{count}} categories
                </div>`
 })
 export class CategoryCountComponent {
     private differ: KeyValueDiffer<any, any>;
-    count: number = 0;
+    count = 0;
 
     constructor(private model: Model,
         private keyValueDiffers: KeyValueDiffers,

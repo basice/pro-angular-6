@@ -1,20 +1,20 @@
 import {
     Directive, ElementRef, Attribute, Input, SimpleChange
-} from "@angular/core";
+} from '@angular/core';
 
 @Directive({
-    selector: "[pa-attr]"
+    selector: '[pa-attr]'
 })
 export class PaAttrDirective {
 
     constructor(private element: ElementRef) { }
 
-    @Input("pa-attr")
+    @Input('pa-attr')
     bgClass: string;
 
     ngOnChanges(changes: { [property: string]: SimpleChange }) {
-        let change = changes["bgClass"];
-        let classList = this.element.nativeElement.classList;
+        const change = changes['bgClass'];
+        const classList = this.element.nativeElement.classList;
         if (!change.isFirstChange() && classList.contains(change.previousValue)) {
             classList.remove(change.previousValue);
         }

@@ -1,35 +1,35 @@
-import { Component, HostListener, Input } from "@angular/core";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model";
-import { RestDataSource } from "../model/rest.datasource";
+import {Component, OnInit} from '@angular/core';
+import {Product} from '../model/product.model';
+import {RestDataSource} from '../model/rest.datasource';
 
 @Component({
-    selector: "first",
-    templateUrl: "first.component.html"
+  selector: 'first',
+  templateUrl: 'first.component.html'
 })
-export class FirstComponent {
-    _category: string = "Soccer";
-    _products: Product[] = [];
-    highlighted: boolean = false;
+export class FirstComponent implements OnInit {
+  _products: Product[] = [];
+  highlighted = false;
 
-    constructor(public datasource: RestDataSource) {}
+  constructor(public datasource: RestDataSource) {
+  }
 
-    ngOnInit() {
-        this.updateData();
-    }
+  _category = 'Soccer';
 
-    getProducts(): Product[] {
-        return this._products;
-    }
+  set category(newValue: string) {
+    this.updateData();
+  }
 
-    set category(newValue: string) {
-        this._category;
-        this.updateData();
-    }
+  ngOnInit() {
+    this.updateData();
+  }
 
-    updateData() {
-        this.datasource.getData()
-            .subscribe(data => this._products = data
-                .filter(p => p.category == this._category));
-    }
+  getProducts(): Product[] {
+    return this._products;
+  }
+
+  updateData() {
+    this.datasource.getData()
+      .subscribe(data => this._products = data
+        .filter(p => p.category === this._category));
+  }
 }
