@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Cart } from "./cart.model";
+import { Injectable } from '@angular/core';
+import { Cart } from './cart.model';
 
 @Injectable()
 export class Order {
@@ -10,7 +10,7 @@ export class Order {
     public state: string;
     public zip: string;
     public country: string;
-    public shipped: boolean = false;
+    public shipped = false;
 
     constructor(public cart: Cart) { }
 

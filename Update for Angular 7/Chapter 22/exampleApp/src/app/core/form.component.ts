@@ -1,33 +1,34 @@
-import { Component } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model"
-import { MODES, SharedState } from "./sharedState.model";
+import {Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {Product} from '../model/product.model';
+import {Model} from '../model/repository.model';
+import {MODES, SharedState} from './sharedState.model';
 
 @Component({
-    selector: "paForm",
-    templateUrl: "form.component.html",
-    styleUrls: ["form.component.css"]
+  selector: 'paForm',
+  templateUrl: 'form.component.html',
+  styleUrls: ['form.component.css']
 })
 export class FormComponent {
-    product: Product = new Product();
+  product: Product = new Product();
 
-    constructor(private model: Model,
-            private state: SharedState) { }
-    
-    get editing(): boolean {
-        return this.state.mode == MODES.EDIT;
-    }
+  constructor(private model: Model,
+              private state: SharedState) {
+  }
 
-    submitForm(form: NgForm) {
-        if (form.valid) {
-            this.model.saveProduct(this.product);
-            this.product = new Product();
-            form.reset();
-        }
-    }
+  get editing(): boolean {
+    return this.state.mode === MODES.EDIT;
+  }
 
-    resetForm() {
-        this.product = new Product();
+  submitForm(form: NgForm) {
+    if (form.valid) {
+      this.model.saveProduct(this.product);
+      this.product = new Product();
+      form.reset();
     }
+  }
+
+  resetForm() {
+    this.product = new Product();
+  }
 }

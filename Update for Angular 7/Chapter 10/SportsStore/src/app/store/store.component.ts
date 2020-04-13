@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { Product } from "../model/product.model";
-import { ProductRepository } from "../model/product.repository";
-import { Cart } from "../model/cart.model";
-import { Router } from "@angular/router";
+import { Component } from '@angular/core';
+import { Product } from '../model/product.model';
+import { ProductRepository } from '../model/product.repository';
+import { Cart } from '../model/cart.model';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: "store",
-    templateUrl: "store.component.html"
+    selector: 'store',
+    templateUrl: 'store.component.html'
 })
 export class StoreComponent {
     public selectedCategory = null;
@@ -18,7 +18,7 @@ export class StoreComponent {
         private router: Router) { }
 
     get products(): Product[] {
-        let pageIndex = (this.selectedPage - 1) * this.productsPerPage
+        const pageIndex = (this.selectedPage - 1) * this.productsPerPage;
         return this.repository.getProducts(this.selectedCategory)
             .slice(pageIndex, pageIndex + this.productsPerPage);
     }
@@ -42,11 +42,11 @@ export class StoreComponent {
 
     get pageCount(): number {
         return Math.ceil(this.repository
-            .getProducts(this.selectedCategory).length / this.productsPerPage)
+            .getProducts(this.selectedCategory).length / this.productsPerPage);
     }
 
     addProductToCart(product: Product) {
         this.cart.addLine(product);
-        this.router.navigateByUrl("/cart");
+        this.router.navigateByUrl('/cart');
     }
 }

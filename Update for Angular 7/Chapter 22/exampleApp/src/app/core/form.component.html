@@ -1,31 +1,31 @@
-<div class="bg-primary text-white p-2" [class.bg-warning]="editing">
-    <h5>{{editing  ? "Edit" : "Create"}} Product</h5>
+<div [class.bg-warning]="editing" class="bg-primary text-white p-2">
+  <h5>{{editing ? "Edit" : "Create"}} Product</h5>
 </div>
 
-<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()" >
+<form #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()" novalidate>
 
-    <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" name="name" 
-               [(ngModel)]="product.name" required />
-    </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input [(ngModel)]="product.name" class="form-control"
+           name="name" required/>
+  </div>
 
-    <div class="form-group">
-        <label>Category</label>
-        <input class="form-control" name="category" 
-               [(ngModel)]="product.category" required />
-    </div>
+  <div class="form-group">
+    <label>Category</label>
+    <input [(ngModel)]="product.category" class="form-control"
+           name="category" required/>
+  </div>
 
-    <div class="form-group">
-        <label>Price</label>
-        <input class="form-control" name="price" 
-               [(ngModel)]="product.price" 
-               required pattern="^[0-9\.]+$" />
-    </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input [(ngModel)]="product.price" class="form-control"
+           name="price"
+           pattern="^[0-9\.]+$" required/>
+  </div>
 
-    <button type="submit" class="btn btn-primary m-1" 
-            [class.btn-warning]="editing" [disabled]="form.invalid">
-        {{editing ? "Save" : "Create"}}
-    </button>
-    <button type="reset" class="btn btn-secondary m-1">Cancel</button>
+  <button [class.btn-warning]="editing" [disabled]="form.invalid"
+          class="btn btn-primary m-1" type="submit">
+    {{editing ? "Save" : "Create"}}
+  </button>
+  <button class="btn btn-secondary m-1" type="reset">Cancel</button>
 </form>

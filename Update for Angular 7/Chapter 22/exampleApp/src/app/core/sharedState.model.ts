@@ -1,8 +1,8 @@
 export enum MODES {
-    CREATE, EDIT
+  CREATE, EDIT
 }
 
 export class SharedState {
-    mode: MODES = MODES.EDIT;
-    id: number;
+  mode: MODES = MODES.EDIT;
+  id: number;
 }

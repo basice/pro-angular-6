@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot,
-            Router } from "@angular/router";
-import { AuthService } from "../model/auth.service";
+            Router } from '@angular/router';
+import { AuthService } from '../model/auth.service';
 
 @Injectable()
 export class AuthGuard {
@@ -13,9 +13,9 @@ export class AuthGuard {
         state: RouterStateSnapshot): boolean {
 
         if (!this.auth.authenticated) {
-            this.router.navigateByUrl("/admin/auth");
+            this.router.navigateByUrl('/admin/auth');
             return false;
-        } 
+        }
         return true;
     }
 }

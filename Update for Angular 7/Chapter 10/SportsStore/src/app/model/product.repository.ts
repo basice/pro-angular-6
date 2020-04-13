@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Product } from "./product.model";
-//import { StaticDataSource } from "./static.datasource";
-import { RestDataSource } from "./rest.datasource";
+import { Injectable } from '@angular/core';
+import { Product } from './product.model';
+// import { StaticDataSource } from "./static.datasource";
+import { RestDataSource } from './rest.datasource';
 
 @Injectable()
 export class ProductRepository {
@@ -46,6 +46,6 @@ export class ProductRepository {
         this.dataSource.deleteProduct(id).subscribe(p => {
             this.products.splice(this.products.
                 findIndex(p => p.id == id), 1);
-        })
+        });
     }
 }
