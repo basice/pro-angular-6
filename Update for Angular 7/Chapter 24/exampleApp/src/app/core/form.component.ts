@@ -1,46 +1,41 @@
-import { Component, Inject } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model";
-import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
-import { Observable } from "rxjs";
-import { filter, map, distinctUntilChanged, skipWhile } from "rxjs/operators";
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Product } from '../model/product.model';
+import { Model } from '../model/repository.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector: "paForm",
-    templateUrl: "form.component.html",
-    styleUrls: ["form.component.css"]
+  selector: 'paForm',
+  templateUrl: 'form.component.html',
+  styleUrls: ['form.component.css']
 })
 export class FormComponent {
-    product: Product = new Product();
+  product: Product = new Product();
+  originalProduct: Product = new Product();
+  editing = false;
 
-    constructor(private model: Model,
-        @Inject(SHARED_STATE) private stateEvents: Observable<SharedState>) {
-            stateEvents
-            // .pipe(skipWhile(state => state.mode == MODES.EDIT))
-            // .pipe(distinctUntilChanged((firstState, secondState) =>
-            //     firstState.mode == secondState.mode 
-            //         && firstState.id == secondState.id))
-            .subscribe(update => {
-                this.product = new Product();
-                if (update.id != undefined) {
-                    Object.assign(this.product, this.model.getProduct(update.id));
-                }
-                this.editing = update.mode == MODES.EDIT;     
-            });
-    }
+  constructor(private model: Model, activeRoute: ActivatedRoute, private router: Router) {
 
-    editing: boolean = false;
-    
-    submitForm(form: NgForm) {
-        if (form.valid) {
-            this.model.saveProduct(this.product);
-            this.product = new Product();
-            form.reset();
+    activeRoute.params.subscribe(params => {
+        this.editing = params['mode'] === 'edit';
+        const id = params['id'];
+        if (id != null) {
+          Object.assign(this.product, model.getProduct(id) || new Product());
+          Object.assign(this.originalProduct, model.getProduct(id));
         }
-    }
+      }
+    );
+  }
 
-    resetForm() {
-        this.product = new Product();
+  submitForm(form: NgForm) {
+    if (form.valid) {
+      this.model.saveProduct(this.product);
+      this.originalProduct = this.product;
+      this.router.navigateByUrl('/');
     }
+  }
+
+  // resetForm() {
+  //   this.product = new Product();
+  // }
 }

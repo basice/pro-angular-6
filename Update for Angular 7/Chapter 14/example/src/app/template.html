@@ -16,7 +16,7 @@
 
     <div class="form-group" *ngFor="let control of form.productControls">
         <label>{{control.label}}</label>
-        <input class="form-control" 
+        <input class="form-control"
             name="{{control.modelProperty}}"
             formControlName="{{control.modelProperty}}" />
         <ul class="text-danger list-unstyled"
