@@ -2,8 +2,7 @@
 import { Model } from './repository.model';
 import { Component } from '@angular/core';
 import { Product } from './product.model';
-import { ProductFormControl, ProductFormGroup } from './form.model';
-import { FormGroup } from '@angular/forms';
+import { ProductFormGroup } from './form.model';
 
 @Component({
     selector: 'app',

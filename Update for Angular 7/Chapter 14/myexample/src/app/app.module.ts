@@ -2,10 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ProductComponent } from './component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { TestComponent } from './dynamic-form/testcomponent';
 
 @NgModule({
   declarations: [
-    ProductComponent
+    ProductComponent,
+    DynamicFormComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -13,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [ProductComponent]
+  bootstrap: [TestComponent]
 })
 export class AppModule {
 }
