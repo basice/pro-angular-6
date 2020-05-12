@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col bg-dark text-white">
+      <a class="navbar-brand">BD1000</a>
+    </div>
+  </div>
+
+  <div class="row text-white">
+    <div class="col-3 bg-info p-2">
+      {{entities.length}} Categories
+    </div>
+    <div class="col-9 bg-success p-2">
+      {{entities.length}} Products
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-9 p-2">
+      <div *ngFor="let entity of entities" class="card m-1 p-1 bg-light">
+        <div class="card-text bg-white p-1">category</div>
+        <h4>
+          {{entity.key}}
+          <span class="badge badge-pill badge-primary float-right">
+              {{ entity.value}}
+            </span>
+        </h4>
+      </div>
+
+    </div>
+  </div>
+</div>
