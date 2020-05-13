@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form" novalidate>
+
+  <div *ngIf="formSubmitted && form.invalid" class="bg-danger text-white p-2 mb-2">
+    There are problems with the form
+    <ul>
+      <li *ngFor="let error of getFormValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngFor="let prop of objectProps">
+    <label [attr.for]="prop">{{prop.label}}</label>
+
+    <div [ngSwitch]="prop.type">
+      <input *ngSwitchCase="'text'" [formControlName]="prop.key"
+             [id]="prop.key"
+             [type]="prop.type" class="form-control">
+
+      <div *ngSwitchCase="'radio'">
+        <label *ngFor="let option of prop.options">
+          <input
+            [formControlName]="prop.key"
+            [name]="prop.key"
+            [value]="option.value"
+            type="radio"> {{option.label}}
+        </label>
+      </div>
+
+      <div *ngSwitchCase="'select'">
+        <select [formControlName]="prop.key">
+          <option *ngFor="let option of prop.options" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="form.get(prop.key).invalid && (formSubmitted || form.get(prop.key).dirty || form.get(prop.key).touched)"
+         class="error">
+      <ul class="text-danger list-unstyled">
+        <li *ngFor="let error of getValidationMessages(prop)">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <button [class.btn-secondary]="formSubmitted && form.invalid"
+            [disabled]="formSubmitted && form.invalid"
+            class="btn btn-primary"
+            type="submit">
+      Save
+    </button>
+  </div>
+
+</form>
+
+<hr/>
+<strong>Form Value</strong>
+<pre>{{ form.value | json }}</pre>
+<strong>Form is valid:</strong> {{form.valid}} <br/>
+<strong>Form submited:</strong> {{formSubmitted}}
+
