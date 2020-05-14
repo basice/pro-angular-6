@@ -1,9 +1,9 @@
-import { Pipe, Injectable } from "@angular/core";
-import { DiscountService } from "./discount.service";
-import { LogService } from "./log.service";
+import { Pipe, Injectable } from '@angular/core';
+import { DiscountService } from './discount.service';
+import { LogService } from './log.service';
 
 @Pipe({
-    name: "discount",
+    name: 'discount',
     pure: false
 })
 export class PaDiscountPipe {

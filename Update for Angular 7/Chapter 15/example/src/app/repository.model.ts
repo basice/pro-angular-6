@@ -1,5 +1,5 @@
-import { Product } from "./product.model";
-import { SimpleDataSource } from "./datasource.model";
+import { Product } from './product.model';
+import { SimpleDataSource } from './datasource.model';
 
 export class Model {
     private dataSource: SimpleDataSource;
@@ -25,14 +25,14 @@ export class Model {
             product.id = this.generateID();
             this.products.push(product);
         } else {
-            let index = this.products
+            const index = this.products
                 .findIndex(p => this.locator(p, product.id));
             this.products.splice(index, 1, product);
         }
     }
 
     deleteProduct(id: number) {
-        let index = this.products.findIndex(p => this.locator(p, id));
+        const index = this.products.findIndex(p => this.locator(p, id));
         if (index > -1) {
             this.products.splice(index, 1);
         }
@@ -47,9 +47,9 @@ export class Model {
     }
 
     swapProduct() {
-        let p = this.products.shift();
+        const p = this.products.shift();
         this.products.push(new Product(p.id, p.name, p.category, p.price));
     }
 
-    
+
 }

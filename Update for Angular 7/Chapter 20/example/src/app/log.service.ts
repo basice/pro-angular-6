@@ -1,7 +1,7 @@
-import { Injectable, InjectionToken } from "@angular/core";
+import { Injectable, InjectionToken } from '@angular/core';
 
-export const LOG_SERVICE = new InjectionToken("logger");
-export const LOG_LEVEL = new InjectionToken("log_level");
+export const LOG_SERVICE = new InjectionToken('logger');
+export const LOG_LEVEL = new InjectionToken('log_level');
 
 export enum LogLevel {
     DEBUG, INFO, ERROR
@@ -34,7 +34,7 @@ export class LogService {
 export class SpecialLogService extends LogService {
 
     constructor() {
-        super()
+        super();
         this.minimumLevel = LogLevel.DEBUG;
     }
 

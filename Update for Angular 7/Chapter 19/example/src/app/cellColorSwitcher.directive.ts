@@ -1,22 +1,22 @@
 import {
     Directive, Input, Output, EventEmitter,
     SimpleChange, ContentChildren, QueryList
-} from "@angular/core";
-import { PaCellColor } from "./cellColor.directive";
+} from '@angular/core';
+import { PaCellColor } from './cellColor.directive';
 
 @Directive({
-    selector: "table"
+    selector: 'table'
 })
 export class PaCellColorSwitcher {
 
-    @Input("paCellDarkColor")
+    @Input('paCellDarkColor')
     modelProperty: Boolean;
 
     @ContentChildren(PaCellColor)
     contentChildren: QueryList<PaCellColor>;
 
     ngOnChanges(changes: { [property: string]: SimpleChange }) {
-        this.updateContentChildren(changes["modelProperty"].currentValue);
+        this.updateContentChildren(changes['modelProperty'].currentValue);
     }
 
     ngAfterContentInit() {

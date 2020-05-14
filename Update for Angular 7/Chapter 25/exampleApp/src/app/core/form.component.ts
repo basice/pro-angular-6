@@ -1,13 +1,13 @@
-import { Component, Inject } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, Inject } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Product } from '../model/product.model';
+import { Model } from '../model/repository.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector: "paForm",
-    templateUrl: "form.component.html",
-    styleUrls: ["form.component.css"]
+    selector: 'paForm',
+    templateUrl: 'form.component.html',
+    styleUrls: ['form.component.css']
 })
 export class FormComponent {
     product: Product = new Product();
@@ -15,13 +15,13 @@ export class FormComponent {
     constructor(private model: Model, activeRoute: ActivatedRoute,
                 private router: Router) {
 
-        this.editing = activeRoute.snapshot.params["mode"] == "edit";
+        this.editing = activeRoute.snapshot.params['mode'] == 'edit';
 
-        let id = activeRoute.snapshot.params["id"];
+        const id = activeRoute.snapshot.params['id'];
         if (id != null) {
-            let name = activeRoute.snapshot.params["name"];
-            let category = activeRoute.snapshot.params["category"];
-            let price = activeRoute.snapshot.params["price"];
+            const name = activeRoute.snapshot.params['name'];
+            const category = activeRoute.snapshot.params['category'];
+            const price = activeRoute.snapshot.params['price'];
 
             if (name != null && category != null && price != null) {
                 this.product.id = id;
@@ -34,14 +34,14 @@ export class FormComponent {
         }
     }
 
-    editing: boolean = false;
+    editing = false;
 
     submitForm(form: NgForm) {
         if (form.valid) {
             this.model.saveProduct(this.product);
-            //this.product = new Product();
-            //form.reset();
-            this.router.navigateByUrl("/");
+            // this.product = new Product();
+            // form.reset();
+            this.router.navigateByUrl('/');
         }
     }
 

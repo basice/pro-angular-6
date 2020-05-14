@@ -1,19 +1,19 @@
-import { Component, Inject } from "@angular/core";
-import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model";
-import { ActivatedRoute } from "@angular/router";
+import { Component, Inject } from '@angular/core';
+import { Product } from '../model/product.model';
+import { Model } from '../model/repository.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: "paTable",
-    templateUrl: "table.component.html"
+    selector: 'paTable',
+    templateUrl: 'table.component.html'
 })
 export class TableComponent {
     category: string = null;
 
     constructor(private model: Model, activeRoute: ActivatedRoute) {
         activeRoute.params.subscribe(params => {
-            this.category = params["category"] || null;
-        })
+            this.category = params['category'] || null;
+        });
     }
 
     getProduct(key: number): Product {

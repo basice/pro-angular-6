@@ -1,29 +1,29 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { OndemandComponent } from "./ondemand.component";
-import { RouterModule } from "@angular/router";
-import { FirstComponent } from "./first.component";
-import { SecondComponent } from "./second.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { OndemandComponent } from './ondemand.component';
+import { RouterModule } from '@angular/router';
+import { FirstComponent } from './first.component';
+import { SecondComponent } from './second.component';
 
-let routing = RouterModule.forChild([
+const routing = RouterModule.forChild([
     {
-        path: "",
+        path: '',
         component: OndemandComponent,
         children: [
             {
-                path: "",
+                path: '',
                 children: [
-                    { outlet: "primary", path: "", component: FirstComponent, },
-                    { outlet: "left", path: "", component: SecondComponent, },
-                    { outlet: "right", path: "", component: SecondComponent, },
+                    { outlet: 'primary', path: '', component: FirstComponent, },
+                    { outlet: 'left', path: '', component: SecondComponent, },
+                    { outlet: 'right', path: '', component: SecondComponent, },
                 ]
             },
             {
-                path: "swap",
+                path: 'swap',
                 children: [
-                    { outlet: "primary", path: "", component: SecondComponent, },
-                    { outlet: "left", path: "", component: FirstComponent, },
-                    { outlet: "right", path: "", component: FirstComponent, },
+                    { outlet: 'primary', path: '', component: SecondComponent, },
+                    { outlet: 'left', path: '', component: FirstComponent, },
+                    { outlet: 'right', path: '', component: FirstComponent, },
                 ]
             },
         ]

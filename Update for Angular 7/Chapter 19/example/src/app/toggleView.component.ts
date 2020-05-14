@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "paToggleView",
-    templateUrl: "toggleView.component.html" 
+    selector: 'paToggleView',
+    templateUrl: 'toggleView.component.html'
 })
 export class PaToggleView {
 
-    showContent: boolean = true;
+    showContent = true;
 }

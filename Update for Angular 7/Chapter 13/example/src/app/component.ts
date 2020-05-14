@@ -1,18 +1,25 @@
-import { ApplicationRef, Component } from "@angular/core";
-import { Model } from "./repository.model";
-import { Product } from "./product.model";
+import { ApplicationRef, Component } from '@angular/core';
+import { Model } from './repository.model';
+import { Product } from './product.model';
 
 @Component({
-    selector: "app",
-    templateUrl: "template.html"
+    selector: 'app',
+    templateUrl: 'template.html'
 })
 export class ProductComponent {
-    model: Model = new Model();
 
     constructor(ref: ApplicationRef) {
         (<any>window).appRef = ref;
         (<any>window).model = this.model;
     }
+
+    get nextProduct(): Product {
+        return this.model.getProducts().shift();
+    }
+    model: Model = new Model();
+
+    targetName = 'Kayak';
+    counter = 1;
 
     getProductByPosition(position: number): Product {
         return this.model.getProducts()[position];
@@ -27,15 +34,8 @@ export class ProductComponent {
     }
 
     getProductCount(): number {
-        console.log("getProductCount invoked");        
+        console.log('getProductCount invoked');
         return this.getProducts().length;
-    }
-
-    targetName: string = "Kayak";
-    counter: number = 1;    
-    
-    get nextProduct(): Product {
-        return this.model.getProducts().shift();
     }
 
     getKey(index: number, product: Product) {

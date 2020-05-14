@@ -1,10 +1,10 @@
-import { ApplicationRef, Component } from "@angular/core";
-import { Model } from "./repository.model";
-import { Product } from "./product.model";
+import { ApplicationRef, Component } from '@angular/core';
+import { Model } from './repository.model';
+import { Product } from './product.model';
 
 @Component({
-    selector: "app",
-    templateUrl: "template.html"
+    selector: 'app',
+    templateUrl: 'template.html'
 })
 export class ProductComponent {
     model: Model = new Model();
@@ -19,7 +19,7 @@ export class ProductComponent {
     }
 
     getClassesByPosition(position: number): string {
-        let product = this.getProductByPosition(position);
-        return "p-2 " + (product.price < 50 ? "bg-info" : "bg-warning");
+        const product = this.getProductByPosition(position);
+        return 'p-2 ' + (product.price < 50 ? 'bg-info' : 'bg-warning');
     }
 }

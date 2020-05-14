@@ -2,10 +2,10 @@ import {
     Directive, ViewContainerRef, TemplateRef,
     Input, SimpleChange, IterableDiffer, IterableDiffers,
     ChangeDetectorRef, CollectionChangeRecord, DefaultIterableDiffer, ViewRef
-} from "@angular/core";
+} from '@angular/core';
 
 @Directive({
-    selector: "[paForOf]"
+    selector: '[paForOf]'
 })
 export class PaIteratorDirective {
     private differ: DefaultIterableDiffer<any>;
@@ -17,7 +17,7 @@ export class PaIteratorDirective {
         private changeDetector: ChangeDetectorRef) {
     }
 
-    @Input("paForOf")
+    @Input('paForOf')
     dataSource: any;
 
     ngOnInit() {
@@ -26,10 +26,10 @@ export class PaIteratorDirective {
     }
 
     ngDoCheck() {
-        let changes = this.differ.diff(this.dataSource);
+        const changes = this.differ.diff(this.dataSource);
         if (changes != null) {
             changes.forEachAddedItem(addition => {
-                let context = new PaIteratorContext(addition.item,
+                const context = new PaIteratorContext(addition.item,
                     addition.currentIndex, changes.length);
                 context.view = this.container.createEmbeddedView(this.template,
                     context);
@@ -38,7 +38,7 @@ export class PaIteratorDirective {
             let removals = false;
             changes.forEachRemovedItem(removal => {
                 removals = true;
-                let context = this.views.get(removal.trackById);
+                const context = this.views.get(removal.trackById);
                 if (context != null) {
                     this.container.remove(this.container.indexOf(context.view));
                     this.views.delete(removal.trackById);

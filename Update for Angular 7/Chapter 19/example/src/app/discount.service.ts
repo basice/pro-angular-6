@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class DiscountService {
-    private discountValue: number = 10;
+    private discountValue = 10;
 
     public get discount(): number {
         return this.discountValue;
@@ -10,7 +10,7 @@ export class DiscountService {
 
     public set discount(newValue: number) {
         this.discountValue = newValue || 0;
-    }         
+    }
 
     public applyDiscount(price: number) {
         return Math.max(price - this.discountValue, 5);

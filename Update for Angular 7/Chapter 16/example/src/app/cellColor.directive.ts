@@ -1,14 +1,14 @@
-import { Directive, HostBinding } from "@angular/core";
+import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-    selector: "td"
+    selector: 'td'
 })
 export class PaCellColor {
 
-    @HostBinding("class")
-    bgClass: string = "";
+    @HostBinding('class')
+    bgClass = '';
 
     setColor(dark: Boolean) {
-        this.bgClass = dark ? "bg-dark" : "";
+        this.bgClass = dark ? 'bg-dark' : '';
     }
 }

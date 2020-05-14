@@ -1,11 +1,11 @@
 import { Directive, HostBinding, Input,
     SimpleChange, KeyValueDiffer, KeyValueDiffers,
-    ChangeDetectorRef } from "@angular/core";
-import { DiscountService } from "./discount.service";
+    ChangeDetectorRef } from '@angular/core';
+import { DiscountService } from './discount.service';
 
 @Directive({
-    selector: "td[pa-price]",
-    exportAs: "discount"
+    selector: 'td[pa-price]',
+    exportAs: 'discount'
 })
 export class PaDiscountAmountDirective {
     private differ: KeyValueDiffer<any, any>;
@@ -14,7 +14,7 @@ export class PaDiscountAmountDirective {
         private changeDetector: ChangeDetectorRef,
         private discount: DiscountService) { }
 
-    @Input("pa-price")
+    @Input('pa-price')
     originalPrice: number;
 
     discountAmount: number;
@@ -25,7 +25,7 @@ export class PaDiscountAmountDirective {
     }
 
     ngOnChanges(changes: { [property: string]: SimpleChange }) {
-        if (changes["originalPrice"] != null) {
+        if (changes['originalPrice'] != null) {
             this.updateValue();
         }
     }

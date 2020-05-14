@@ -1,8 +1,8 @@
-import { Pipe } from "@angular/core";
-import { Product } from "./product.model";
+import { Pipe } from '@angular/core';
+import { Product } from './product.model';
 
 @Pipe({
-    name: "filter",
+    name: 'filter',
     pure: false
 })
 export class PaCategoryFilterPipe {

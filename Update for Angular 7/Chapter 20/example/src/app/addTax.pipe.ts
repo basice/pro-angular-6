@@ -1,15 +1,15 @@
-import { Pipe } from "@angular/core";
+import { Pipe } from '@angular/core';
 
 @Pipe({
-    name: "addTax"
+    name: 'addTax'
 })
 export class PaAddTaxPipe {
 
-    defaultRate: number = 10;
+    defaultRate = 10;
 
     transform(value: any, rate?: any): number {
-        let valueNumber = Number.parseFloat(value);
-        let rateNumber = rate == undefined ? 
+        const valueNumber = Number.parseFloat(value);
+        const rateNumber = rate == undefined ?
             this.defaultRate : Number.parseInt(rate);
         return valueNumber + (valueNumber * (rateNumber / 100));
     }
